@@ -1,0 +1,3 @@
+http://www.catb.org/esr/structure-packing/#_alignment_requirements
+http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
+https://www.kernel.org/doc/Documentation/unaligned-memory-access.txt

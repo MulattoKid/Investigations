@@ -1,0 +1,5 @@
+http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
+https://stackoverflow.com/questions/98650/what-is-the-strict-aliasing-rule
+https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html
+https://stackoverflow.com/questions/64733632/is-casting-uint8-t-to-uint32-t-or-uint64-t-well-defined-in-c99-as-long-as-we
+http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf
