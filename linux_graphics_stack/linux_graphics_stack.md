@@ -42,6 +42,7 @@ Links:
 - https://en.wikipedia.org/wiki/Xlib
 - https://en.wikipedia.org/wiki/XCB
 - https://en.wikipedia.org/wiki/GLX
+- https://blogs.igalia.com/itoral/2014/07/29/a-brief-introduction-to-the-linux-graphics-stack/
 
 ## Wayland Display Server Protocol
 TODO
