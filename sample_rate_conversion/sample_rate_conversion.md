@@ -30,22 +30,28 @@ Let's look at a quick example: imagine wanting to slow down playback of a signal
 at 44.1 KHz. The same effect will be heard!
 
 Sample-rate conversion consists of three parts:
-1) [Upsampling](https://dspguru.com/dsp/faqs/multirate/interpolation/): this increases the sample rate of the discrete signal, giving a upsampling/
-interpolation factor of `L`
+1) [Upsampling](https://dspguru.com/dsp/faqs/multirate/interpolation/): this increases the sample rate of the discrete signal, giving an upsampling/
+interpolation factor of `L = output_rate_1 / input_rate`
 2) [Filtering](https://dspguru.com/dsp/faqs/multirate/interpolation/): this interpolates the upsampled discrete signal
 3) [Decimation](https://dspguru.com/dsp/faqs/multirate/decimation/): this reduces the sample rate of the discrete signal, giving a decimation factor of 
-`M`
+`M = output_rate_1 / output_rate_2`
 
-The resampling factor `R` then becomes `R = L / M`. In the above example when wanting to go from 44.1 KHz to 55.125 KHz we get the following:
+The resampling factor `R` then becomes
 ```
-44100 / 55125 = 4 / 5 = 0.8
+R = L / M = (output_rate_1 / input_rate) / (output_rate_1 / output_rate_2) =
+            (output_rate_1 / input_rate) * (output_rate_2 / output_rate_1) =
+            output_rate_2 / input_rate
 ```
-so we end up upsampling by a factor of `L = 4` and decimating by a factor `M = 5`.
+In the above example when wanting to go from 44.1 KHz to 55.125 KHz we get the following:
+```
+55125 / 44100 = 5 / 4 = 1.2
+```
+so we end up upsampling by a factor of `L = 5` and decimating by a factor `M = 4`.
 
 While the above is a practical example relating to audio signals, let's stick to a "simpler" example for the remaining of this investigation:
 - Our discrete signal is a Sine wave with amplitude and frequency of 1, sampled at 100 Hz
 - We want to alter the sampling rate to be 120 Hz instead
-- This gives us `L = 5` and `M = 6`, which means `R = L / M = 5 / 6`
+- This gives us `L = 6` and `M = 5`, which means `R = L / M = 100 / 120 = 6 / 5`
 - We need to upsample the signal by zero-stuffing 5 zeros between each existing sample
 - We need to filter the upsampled signal
 - We need to decimate the upsampled and filtered signal by a factor of 6
@@ -158,6 +164,9 @@ And there we are; we have an upsampled and filtered signal at 1 KHz. However, re
 do the next step too; decimation.
 
 ### Decimation
+Decimation, also known as downsampling when the signal isn't also filtered, is very much like upsampling; for every M samples, only keep the first of the
+samples, and discard the rest. When doing this with our example we get the following:
+![Downsampled Signal](sine_sineDFT_sineUpsampled_sineUpsampledDFT_sineFiltered_sineFilteredDFT_sineDownsampled_sineDownsampledDFT.png)
 
 ## Links
 - https://en.wikipedia.org/wiki/Sample-rate_conversion

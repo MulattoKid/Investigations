@@ -17,9 +17,11 @@ plot_hamming_window_sinc_dft = False
 plot_filter_sinc = False
 plot_filter_hamming = False
 plot_filter = False
-plot_filter_normalized = True
+plot_filter_normalized = False
 plot_filter_sine_upsampled = True
 plot_filter_sine_upsampled_dft = True
+plot_filter_sine_upsampled_downsampled = True
+plot_filter_sine_upsampled_downsampled_dft = True
 
 plot_count = 0
 if True: # Just for easier collapse :)
@@ -58,6 +60,10 @@ if True: # Just for easier collapse :)
     if plot_filter_sine_upsampled:
         plot_count += 1
     if plot_filter_sine_upsampled_dft:
+        plot_count += 1
+    if plot_filter_sine_upsampled_downsampled:
+        plot_count += 1
+    if plot_filter_sine_upsampled_downsampled_dft:
         plot_count += 1
 if plot_count < 1:
     print("Nothing to plot...")
@@ -162,7 +168,7 @@ if plot_sine_dft:
 #
 # Upsampled sine wave
 #
-upsample_factor = 5
+upsample_factor = 6
 sine_upsampled_sample_rate = sine_sample_rate * upsample_factor
 sine_upsampled_step = 1.0 / sine_upsampled_sample_rate
 sine_upsampled_sample_count = int(sine_time * sine_upsampled_sample_rate)
@@ -401,6 +407,36 @@ if plot_filter_sine_upsampled_dft:
     axs[plot_index].bar([i for i in range(0, sine_upsampled_sample_rate / 2)], sine_wave_upsampled_filtered_dft)
     axs[plot_index].set_title('Filtered Upsampled Sine Wave DFT')
     axs[plot_index].set_xlim([0, sine_upsampled_sample_rate / 2])
+    axs[plot_index].grid(True)
+    plot_index += 1
+
+#
+# Downsample
+#
+# Perform downsampling
+downsample_factor = 5
+sine_downsampled_sample_rate = sine_upsampled_sample_rate / downsample_factor
+sine_downsampled_step = 1.0 / sine_downsampled_sample_rate
+sine_downsampled_sample_count = sine_upsampled_sample_count / downsample_factor
+sine_downsampled_samples = []
+for i in range(0, sine_downsampled_sample_count):
+    sine_downsampled_samples.append(sine_upsampled_filtered_samples[i * downsample_factor])
+# Plot
+if plot_filter_sine_upsampled_downsampled:
+    axs[plot_index].plot([(sine_downsampled_step * i) for i in range(0, sine_downsampled_sample_count)], sine_downsampled_samples)
+    axs[plot_index].set_title('Sine Wave Downsampled')
+    axs[plot_index].set_xlim([0.0, sine_time])
+    axs[plot_index].grid(True)
+    plot_index += 1
+
+#
+# Downsample DFT
+#
+if plot_filter_sine_upsampled_downsampled_dft:
+    sine_wave_upsampled_filtered_downsampled_dft = DFT(sine_downsampled_sample_rate, sine_downsampled_samples, sine_downsampled_sample_rate)
+    axs[plot_index].bar([i for i in range(0, sine_downsampled_sample_rate / 2)], sine_wave_upsampled_filtered_downsampled_dft)
+    axs[plot_index].set_title('Downsampled Sine Wave DFT')
+    axs[plot_index].set_xlim([0, sine_downsampled_sample_rate / 2])
     axs[plot_index].grid(True)
     plot_index += 1
 
