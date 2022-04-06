@@ -14,6 +14,8 @@
 
 - [OpenGL Windowing System](opengl_windowing_system): TODO
 
+- [Sample-Rate Rate](sample_rate_conversion): a relatively in-depth look at how to do sample-rate conversion on audio
+
 - [Strict Aliasing](strict_aliasing): TODO
 
 - [Vulkan Windowing System](vulkan_windowing_system): a brief overview of the Vulkan windowing system.
