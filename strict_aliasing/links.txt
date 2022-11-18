@@ -1,3 +1,4 @@
+https://gist.github.com/shafik/848ae25ee209f698763cffee272a58f8
 http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html
 https://stackoverflow.com/questions/98650/what-is-the-strict-aliasing-rule
 https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html
