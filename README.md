@@ -1,6 +1,8 @@
 # Investigations
 - [Alignment](alignment/): different basic types in C have different alignment requirements. This set of examples attempts to explore this topic, and show some of the nuances related to it.
 
+- [Embedded](embedded/embedded.md): a mix of topic related to embedded development
+
 - [Floating Point Bit Exactness](floating_point_bit_exactness):
   - https://gafferongames.com/post/floating_point_determinism/
   - https://twitter.com/tom_forsyth/status/1430635439703027712
