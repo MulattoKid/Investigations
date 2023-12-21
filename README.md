@@ -8,6 +8,8 @@
   - https://twitter.com/tom_forsyth/status/1430635439703027712
   - https://gcc.gnu.org/wiki/FloatingPointMath
 
+- [Internet Protocol Suite](internet_protocol_suite/internet_protocol_suite.md): a look at the internet protocol stack and its components
+
 - [Linux Graphics Stack](linux_graphics_stack/linux_graphics_stack.md): a brief walkthrough of the Linux grahpics stack.
 
 - [Memory](memory/memory.md): a brief overview of how memory works.
